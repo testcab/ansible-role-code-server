@@ -1,0 +1,11 @@
+---
+- name: Download code-server
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: https://github.com/cdr/code-server/releases/download/{{ code_server_ver }}/code-server{{ code_server_ver }}-linux-x64.tar.gz
+    dest: "{{ bin_dir }}"
+    exclude:
+      - LICENSE
+      - README.md
+    extra_opts: --strip-components=1
