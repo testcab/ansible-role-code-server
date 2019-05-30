@@ -1,4 +1,8 @@
 ---
+- name: Include RedHat specific tasks
+  include_tasks: RedHat.yml
+  when: ansible_os_family == "RedHat"
+
 - name: Download code-server
   become: yes
   unarchive:
@@ -9,3 +13,44 @@
       - LICENSE
       - README.md
     extra_opts: --strip-components=1
+  notify: Restart code-server
+
+- name: Copy code-server systemd unit file
+  become: yes
+  template:
+    src: code-server.service
+    dest: "{{ systemd_unit_files_dir }}"
+  notify: Restart code-server
+
+- name: Create code-server data dir
+  file:
+    path: "{{ code_server_data_dir }}"
+    state: directory
+
+- name: Copy code-server env file
+  template:
+    src: env
+    dest: "{{ code_server_data_dir }}"
+    mode: 0600
+  notify: Restart code-server
+  when: code_server_password != ""
+
+- name: Copy TLS certificate
+  copy:
+    src: "{{ tls_cert }}"
+    dest: "{{ code_server_data_dir }}/tls.cert"
+  notify: Restart code-server
+  when: tls_cert != ""
+
+- name: Copy TLS key
+  copy:
+    src: "{{ tls_key }}"
+    dest: "{{ code_server_data_dir }}/tls.key"
+  notify: Restart code-server
+  when: tls_key != ""
+
+- name: Enable code-server service
+  become: yes
+  systemd:
+    name: code-server
+    enabled: yes

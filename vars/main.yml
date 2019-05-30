@@ -1,2 +1,4 @@
 ---
 bin_dir: /usr/local/bin
+systemd_unit_files_dir: /etc/systemd/system
+code_server_data_dir_abs: "{{ code_server_data_dir | expanduser }}"
