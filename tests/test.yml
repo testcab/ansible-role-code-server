@@ -4,6 +4,7 @@
   gather_facts: yes
   roles:
     - name: ../..
+      #code_server_work_dir: ~
       #code_server_password: "" # Leave empty to use auto-generated password
       code_server_user: "{{ ansible_user_id }}"
       code_server_host: 127.0.0.1
