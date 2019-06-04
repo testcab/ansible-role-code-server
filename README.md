@@ -37,7 +37,7 @@ Example Playbook
 - hosts: localhost
   gather_facts: yes
   roles:
-    - name: testcab/code_server
+    - name: pallxk/code_server
       code_server_work_dir: ~/code-server
       code_server_password: SuperSecret
       code_server_user: "{{ ansible_user_id }}"
@@ -55,6 +55,7 @@ The MIT License (MIT)
 Author Information
 ------------------
 
+[pallxk](https://github.com/pallxk)
 [testcab](https://github.com/testcab)
 
 
