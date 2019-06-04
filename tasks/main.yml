@@ -40,21 +40,21 @@
     dest: "{{ code_server_data_dir }}"
     mode: 0600
   notify: Restart code-server
-  when: code_server_password != ""
+  when: code_server_password is defined
 
 - name: Copy TLS certificate
   copy:
     src: "{{ tls_cert }}"
     dest: "{{ code_server_data_dir }}/tls.cert"
   notify: Restart code-server
-  when: tls_cert != ""
+  when: tls_cert is defined
 
 - name: Copy TLS key
   copy:
     src: "{{ tls_key }}"
     dest: "{{ code_server_data_dir }}/tls.key"
   notify: Restart code-server
-  when: tls_key != ""
+  when: tls_key is defined
 
 - name: Enable code-server service
   become: yes
