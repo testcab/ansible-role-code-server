@@ -1,5 +1,61 @@
 ansible-role-code-server
 ========================
 
-Download code-server.
+This role installs and configures [code-server].
 
+Requirements
+------------
+
+None.
+
+Role Variables
+--------------
+
+Variable             | Default  | Comment
+-------------------- | -------- | -------
+code_server_ver      | `1.1119-vsc1.33.1` | code-server release name on GitHub
+code_server_data_dir | `~/.local/share/code-server`
+code_server_work_dir | `~` | Working directory
+code_server_password | `""` | Leave empty to use auto-generated password. <br> Check it with `journalctl -u code-server`
+code_server_user     | `root` | The user to run code-server
+code_server_host     | `0.0.0.0`
+code_server_port     | `8443`
+tls_cert             | `""` | Leave empty to use self-signed certificate.
+tls_key              | `""` | Leave empty to use self-signed certificate.
+
+Dependencies
+------------
+
+None.
+
+Example Playbook
+----------------
+
+```yaml
+#!/usr/bin/env ansible-playbook
+---
+- hosts: localhost
+  gather_facts: yes
+  roles:
+    - name: testcab/code_server
+      code_server_work_dir: ~/code-server
+      code_server_password: SuperSecret
+      code_server_user: "{{ ansible_user_id }}"
+      code_server_host: 0.0.0.0
+      code_server_port: 8443
+      tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
+      tls_key: /etc/letsencrypt/live/example.com/privkey.pem
+```
+
+License
+-------
+
+The MIT License (MIT)
+
+Author Information
+------------------
+
+[testcab](https://github.com/testcab)
+
+
+[code-server]: https://github.com/cdr/code-server
