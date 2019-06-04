@@ -22,6 +22,13 @@
     dest: "{{ systemd_unit_files_dir }}"
   notify: Restart code-server
 
+- name: Copy code-server systemd override file
+  become: yes
+  copy:
+    src: code-server.service.d
+    dest: "{{ systemd_unit_files_dir }}"
+  notify: Restart code-server
+
 - name: Create code-server data dir
   file:
     path: "{{ code_server_data_dir }}"
