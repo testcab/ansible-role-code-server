@@ -3,6 +3,11 @@
   include_tasks: RedHat.yml
   when: ansible_os_family == "RedHat"
 
+- name: Check systemd version
+  shell: "systemctl --version | head -1 | cut -d' ' -f2"
+  register: systemctl_version
+  changed_when: no
+
 - name: Download code-server
   become: yes
   unarchive:
@@ -24,9 +29,9 @@
 
 - name: Copy code-server systemd override file
   become: yes
-  copy:
-    src: code-server.service.d
-    dest: "{{ systemd_unit_files_dir }}"
+  template:
+    src: code-server.service.d/restart.conf
+    dest: "{{ systemd_unit_files_dir }}/code-server.service.d/"
   notify: Restart code-server
 
 - name: Create code-server data dir
