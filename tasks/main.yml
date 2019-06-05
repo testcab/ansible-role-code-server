@@ -4,7 +4,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Check systemd version
-  shell: "systemctl --version | head -1 | cut -d' ' -f2"
+  shell: "set -o pipefail; systemctl --version | head -1 | cut -d' ' -f2"
   register: systemctl_version
   changed_when: no
 
