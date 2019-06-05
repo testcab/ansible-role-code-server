@@ -1,6 +1,8 @@
 ansible-role-code-server
 ========================
 
+[![Ansible Role](https://img.shields.io/ansible/role/40925.svg?style=flat-square)](https://galaxy.ansible.com/pallxk/code_server)
+
 This role installs and configures [code-server].
 
 Requirements
