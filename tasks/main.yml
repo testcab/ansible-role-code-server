@@ -72,3 +72,6 @@
   systemd:
     name: code-server
     enabled: yes
+
+- name: Sanity Test
+  include_tasks: tests.yml
