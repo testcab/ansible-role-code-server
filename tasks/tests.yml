@@ -8,3 +8,4 @@
     host: "{{ inventory_hostname }}"
     port: "{{ code_server_port }}"
   delegate_to: localhost
+  ignore_errors: yes
