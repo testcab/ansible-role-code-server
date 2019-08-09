@@ -19,10 +19,10 @@
     remote_src: yes
     src: "{{ code_server_tar_url }}"
     dest: "{{ bin_dir }}"
-    exclude:
-      - LICENSE
-      - README.md
-    extra_opts: --strip-components=1
+    extra_opts:
+      - --strip-components=1
+      - --wildcards
+      - "*/code-server"
   notify: Restart code-server
   when: code_server_version.stdout != code_server_ver
 
