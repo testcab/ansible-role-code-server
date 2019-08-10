@@ -2,6 +2,7 @@
 bin_dir: /usr/local/bin
 systemd_unit_files_dir: /etc/systemd/system
 code_server_url_prefix: https://github.com/cdr/code-server/releases/download
-code_server_arch: "{{ 'x64' if code_server_ver.startswith('1') else 'x86_64' }}"
+code_server_major: "{{ '2' if code_server_ver.startswith('2') else '1' }}"
+code_server_arch: "{{ 'x86_64' if code_server_major == '2' else 'x64' }}"
 code_server_tar_url: "{{ code_server_url_prefix }}/{{ code_server_ver }}/code-server{{ code_server_ver }}-linux-{{ code_server_arch }}.tar.gz"
 code_server_data_dir_abs: "{{ code_server_data_dir | expanduser }}"
