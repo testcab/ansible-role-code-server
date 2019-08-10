@@ -21,7 +21,7 @@ code_server_work_dir | `~` | Working directory
 code_server_password | (not defined) | Leave not defined to use auto-generated password. <br> Check it with `journalctl -u code-server`
 code_server_user     | `root` | The user to run code-server
 code_server_host     | `0.0.0.0`
-code_server_port     | `8443`
+code_server_port     | `8080`
 tls_cert             | (not defined) | Leave not defined to use self-signed certificate.
 tls_key              | (not defined) | Leave not defined to use self-signed certificate.
 
