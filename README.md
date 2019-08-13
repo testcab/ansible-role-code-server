@@ -15,7 +15,7 @@ Role Variables
 
 Variable             | Default  | Comment
 -------------------- | -------- | -------
-code_server_ver      | `2.preview.3-vsc1.37.0` | code-server release name on GitHub
+code_server_ver      | `2.preview.4-vsc1.37.0` | code-server release name on GitHub
 code_server_data_dir | `~/.local/share/code-server`
 code_server_work_dir | `~` | Working directory
 code_server_password | (not defined) | Leave not defined to use auto-generated password. <br> Check it with `journalctl -u code-server`
