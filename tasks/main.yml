@@ -8,9 +8,16 @@
   register: systemctl_version
   changed_when: no
 
-- name: Check code-server version
+- name: Check code-server v1 version
   command: code-server --version
   register: code_server_version
+  when: code_server_major == '1'
+  changed_when: no
+
+- name: Check code-server v2 version
+  shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
+  register: code_server_version
+  when: code_server_major != '1'
   changed_when: no
 
 - name: Download code-server
