@@ -8,16 +8,23 @@
   register: systemctl_version
   changed_when: no
 
+- name: Check code-server binary exists
+  stat:
+    path: "{{ bin_dir }}/code-server"
+  register: code_server_exists
+
 - name: Check code-server v1 version
   command: code-server --version
   register: code_server_version
-  when: code_server_major == '1'
+  when: code_server_major == '1' and
+        code_server_exists.stat.exists == true
   changed_when: no
 
 - name: Check code-server v2 version
   shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
   register: code_server_version
-  when: code_server_major != '1'
+  when: code_server_major != '1' and
+        code_server_exists.stat.exists == true
   changed_when: no
 
 - name: Download code-server
@@ -31,7 +38,8 @@
       - --wildcards
       - "*/code-server"
   notify: Restart code-server
-  when: code_server_version.stdout != code_server_ver
+  when: code_server_exists.stat.exists == false or
+        code_server_version.stdout != code_server_ver
 
 - name: Copy code-server systemd unit file
   become: yes
