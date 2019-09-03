@@ -17,14 +17,14 @@
   command: code-server --version
   register: code_server_version
   when: code_server_major == '1' and
-        code_server_exists.stat.exists == true
+        code_server_exists.stat.exists
   changed_when: no
 
 - name: Check code-server v2 version
   shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
   register: code_server_version
   when: code_server_major != '1' and
-        code_server_exists.stat.exists == true
+        code_server_exists.stat.exists
   changed_when: no
 
 - name: Download code-server
@@ -38,7 +38,7 @@
       - --wildcards
       - "*/code-server"
   notify: Restart code-server
-  when: code_server_exists.stat.exists == false or
+  when: not code_server_exists.stat.exists or
         code_server_version.stdout != code_server_ver
 
 - name: Copy code-server systemd unit file
