@@ -1,5 +1,5 @@
 ---
-code_server_ver: 2.preview.11-vsc1.37.0
+code_server_ver: 2.1478-vsc1.38.1
 code_server_data_dir: ~/.local/share/code-server
 code_server_work_dir: ~
 #code_server_password: ""
