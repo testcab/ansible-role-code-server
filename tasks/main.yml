@@ -8,79 +8,85 @@
   register: systemctl_version
   changed_when: no
 
-- name: Check code-server binary exists
-  stat:
-    path: "{{ bin_dir }}/code-server"
-  register: code_server_exists
+- name: Check code-server
+  block:
+  - name: Check code-server binary exists
+    stat:
+      path: "{{ bin_dir }}/code-server"
+    register: code_server_exists
 
-- name: Check code-server v1 version
-  command: code-server --version
-  register: code_server_version
-  when: code_server_major == '1' and
-        code_server_exists.stat.exists
-  changed_when: no
+  - name: Check code-server v1 version
+    command: code-server --version
+    register: code_server_version
+    when: code_server_major == '1' and
+          code_server_exists.stat.exists
+    changed_when: no
 
-- name: Check code-server v2 version
-  shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
-  register: code_server_version
-  when: code_server_major != '1' and
-        code_server_exists.stat.exists
-  changed_when: no
+  - name: Check code-server v2 version
+    shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
+    register: code_server_version
+    when: code_server_major != '1' and
+          code_server_exists.stat.exists
+    changed_when: no
 
-- name: Download code-server
-  become: yes
-  unarchive:
-    remote_src: yes
-    src: "{{ code_server_tar_url }}"
-    dest: "{{ bin_dir }}"
-    extra_opts:
-      - --strip-components=1
-      - --wildcards
-      - "*/code-server"
-  notify: Restart code-server
-  when: not code_server_exists.stat.exists or
-        code_server_version.stdout != code_server_ver
+- name: Install code-server
+  block:
+  - name: Download code-server
+    become: yes
+    unarchive:
+      remote_src: yes
+      src: "{{ code_server_tar_url }}"
+      dest: "{{ bin_dir }}"
+      extra_opts:
+        - --strip-components=1
+        - --wildcards
+        - "*/code-server"
+    notify: Restart code-server
+    when: not code_server_exists.stat.exists or
+          code_server_version.stdout != code_server_ver
 
-- name: Copy code-server systemd unit file
-  become: yes
-  template:
-    src: code-server.service
-    dest: "{{ systemd_unit_files_dir }}"
-  notify: Restart code-server
+  - name: Copy code-server systemd unit file
+    become: yes
+    template:
+      src: code-server.service
+      dest: "{{ systemd_unit_files_dir }}"
+    notify: Restart code-server
 
-- name: Copy code-server systemd override file
-  become: yes
-  template:
-    src: code-server.service.d/restart.conf
-    dest: "{{ systemd_unit_files_dir }}/code-server.service.d/"
-  notify: Restart code-server
+  - name: Copy code-server systemd override file
+    become: yes
+    template:
+      src: code-server.service.d/restart.conf
+      dest: "{{ systemd_unit_files_dir }}/code-server.service.d/"
+    notify: Restart code-server
 
-- name: Create code-server data dir
-  file:
-    path: "{{ code_server_data_dir }}"
-    state: directory
+- name: Configure code-server
+  block:
+  - name: Create code-server data dir
+    file:
+      path: "{{ code_server_data_dir }}"
+      state: directory
 
-- name: Copy code-server env file
-  template:
-    src: env
-    dest: "{{ code_server_data_dir }}"
-    mode: 0600
-  notify: Restart code-server
-  when: code_server_password is defined
+  - name: Copy code-server env file
+    template:
+      src: env
+      dest: "{{ code_server_data_dir }}"
+      mode: 0600
+    notify: Restart code-server
+    when: code_server_password is defined
 
-- name: Copy TLS certificate
-  copy:
-    src: "{{ tls_cert }}"
-    dest: "{{ code_server_data_dir }}/tls.cert"
-  notify: Restart code-server
-  when: tls_cert is defined
+  - name: Copy TLS certificate
+    copy:
+      src: "{{ tls_cert }}"
+      dest: "{{ code_server_data_dir }}/tls.cert"
+    notify: Restart code-server
+    when: tls_cert is defined
 
-- name: Copy TLS key
-  copy:
-    src: "{{ tls_key }}"
-    dest: "{{ code_server_data_dir }}/tls.key"
-  notify: Restart code-server
-  when: tls_key is defined
+  - name: Copy TLS key
+    copy:
+      src: "{{ tls_key }}"
+      dest: "{{ code_server_data_dir }}/tls.key"
+    notify: Restart code-server
+    when: tls_key is defined
 
 - name: Enable code-server service
   become: yes
