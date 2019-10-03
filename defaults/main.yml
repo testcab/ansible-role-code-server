@@ -1,10 +1,10 @@
 ---
 code_server_ver: 2.1523-vsc1.38.1
-code_server_data_dir: ~/.local/share/code-server
-code_server_work_dir: ~
 #code_server_password: ""
 code_server_user: root
 code_server_host: 0.0.0.0
 code_server_port: 8080
+code_server_data_dir: "/home/{{code_server_user}}/.local/share/code-server"
+code_server_work_dir: "/home/{{code_server_user}}/"
 #tls_cert: ""
 #tls_key: ""

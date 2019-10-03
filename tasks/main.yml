@@ -65,11 +65,16 @@
     file:
       path: "{{ code_server_data_dir }}"
       state: directory
+      group: "{{ code_server_user }}"
+      owner: "{{ code_server_user }}"
+      mode: "0700"
 
   - name: Copy code-server env file
     template:
       src: env
       dest: "{{ code_server_data_dir }}"
+      group: "{{ code_server_user }}"
+      owner: "{{ code_server_user }}"
       mode: 0600
     notify: Restart code-server
     when: code_server_password is defined
@@ -93,6 +98,8 @@
   systemd:
     name: code-server
     enabled: yes
+    state: restarted
+    daemon_reload: yes
 
 - name: Sanity Test
   include_tasks: tests.yml
