@@ -83,7 +83,7 @@
     when: code_server_password is defined
 
   - name: Copy TLS certificate
-    become: yes
+    become: "{{ tls_cert_remote }}"
     copy:
       remote_src: "{{ tls_cert_remote }}"
       src: "{{ tls_cert }}"
@@ -94,7 +94,7 @@
     when: tls_cert is defined
 
   - name: Copy TLS key
-    become: yes
+    become: "{{ tls_cert_remote }}"
     copy:
       remote_src: "{{ tls_key_remote }}"
       src: "{{ tls_key }}"
