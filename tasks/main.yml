@@ -96,6 +96,8 @@
     notify: Restart code-server
     when: tls_key is defined
 
+- meta: flush_handlers
+
 - name: Enable code-server service
   become: yes
   systemd:
