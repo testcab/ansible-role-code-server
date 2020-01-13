@@ -23,7 +23,9 @@ code_server_user     | `root` | The user to run code-server
 code_server_host     | `0.0.0.0`
 code_server_port     | `8080`
 tls_cert             | (not defined) | Leave not defined to use self-signed certificate.
+tls_cert_remote      | `no` | Change to `yes` if you're using a certificate that's already in your server (e.g.: if you use Let's Encrypt)
 tls_key              | (not defined) | Leave not defined to use self-signed certificate.
+tls_key_remote      | `no` | Change to `yes` if you're using a key that's already in your server (e.g.: if you use Let's Encrypt)
 
 Dependencies
 ------------
