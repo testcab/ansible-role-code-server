@@ -104,5 +104,8 @@
     name: code-server
     enabled: yes
 
+- name: Report
+  include_tasks: report.yml
+
 - name: Sanity Test
   include_tasks: tests.yml

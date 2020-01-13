@@ -1,2 +1,2 @@
 ---
-systemd_unit_files_dir: /usr/local/lib/systemd/system/
+systemd_unit_files_dir: /usr/local/lib/systemd/system
