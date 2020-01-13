@@ -82,27 +82,27 @@
     notify: Restart code-server
     when: code_server_password is defined
 
-    - name: Copy TLS certificate
-      become: yes
-      copy:
-        remote_src: "{{ tls_cert_remote }}"
-        src: "{{ tls_cert }}"
-        dest: "{{ code_server_data_dir }}/tls.cert"
-        mode: 0440
-        group: "{{ code_server_user }}"
-      notify: Restart code-server
-      when: tls_cert is defined
+  - name: Copy TLS certificate
+    become: yes
+    copy:
+      remote_src: "{{ tls_cert_remote }}"
+      src: "{{ tls_cert }}"
+      dest: "{{ code_server_data_dir }}/tls.cert"
+      mode: 0440
+      group: "{{ code_server_user }}"
+    notify: Restart code-server
+    when: tls_cert is defined
 
-    - name: Copy TLS key
-      become: yes
-      copy:
-        remote_src: "{{ tls_key_remote }}"
-        src: "{{ tls_key }}"
-        dest: "{{ code_server_data_dir }}/tls.key"
-        mode: 0440
-        group: "{{ code_server_user }}"
-      notify: Restart code-server
-      when: tls_key is defined
+  - name: Copy TLS key
+    become: yes
+    copy:
+      remote_src: "{{ tls_key_remote }}"
+      src: "{{ tls_key }}"
+      dest: "{{ code_server_data_dir }}/tls.key"
+      mode: 0440
+      group: "{{ code_server_user }}"
+    notify: Restart code-server
+    when: tls_key is defined
 
 - meta: flush_handlers
 
