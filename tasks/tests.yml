@@ -2,10 +2,12 @@
 - name: Test connectivity locally
   wait_for:
     port: "{{ code_server_port }}"
+    timeout: 15
 
 - name: Test connectivity remotely
   wait_for:
     host: "{{ inventory_hostname }}"
     port: "{{ code_server_port }}"
+    timeout: 15
   delegate_to: localhost
   ignore_errors: yes
