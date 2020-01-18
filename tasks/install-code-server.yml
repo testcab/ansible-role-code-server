@@ -1,0 +1,27 @@
+- name: Download code-server
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: "{{ code_server_tar_url }}"
+    dest: "{{ bin_dir }}"
+    extra_opts:
+      - --strip-components=1
+      - --wildcards
+      - "*/code-server"
+  notify: Restart code-server
+  when: not code_server_exists.stat.exists or
+        code_server_version.stdout != code_server_ver
+
+- name: Copy code-server systemd unit file
+  become: yes
+  template:
+    src: code-server.service
+    dest: "{{ systemd_unit_files_dir }}"
+  notify: Restart code-server
+
+- name: Copy code-server systemd override file
+  become: yes
+  template:
+    src: code-server.service.d/restart.conf
+    dest: "{{ systemd_unit_files_dir }}/code-server.service.d/"
+  notify: Restart code-server
