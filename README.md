@@ -1,7 +1,8 @@
 ansible-role-code-server
 ========================
 
-[![Ansible Role](https://img.shields.io/ansible/role/40925.svg?style=flat-square)](https://galaxy.ansible.com/pallxk/code_server)
+[![Ansible Role](https://img.shields.io/ansible/role/40925.svg)](https://galaxy.ansible.com/pallxk/code_server)
+[![Build Status](https://travis-ci.org/testcab/ansible-role-code-server.svg?branch=master)](https://travis-ci.org/testcab/ansible-role-code-server)
 
 This role installs and configures [code-server], supporting both v1 and v2.
 

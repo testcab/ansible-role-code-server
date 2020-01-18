@@ -1,0 +1,9 @@
+dist: bionic
+
+addons:
+  apt:
+    packages:
+    - ansible-lint
+
+script:
+- ansible-lint **/*.yml
