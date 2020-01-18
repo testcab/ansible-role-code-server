@@ -43,6 +43,8 @@ galaxy_info:
     - all
 
   galaxy_tags:
+  - development
+  - code
   - codeserver
   - vscode
 
