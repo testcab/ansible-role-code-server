@@ -1,12 +1,11 @@
 #!/usr/bin/env ansible-playbook
 ---
 - hosts: localhost
-  gather_facts: yes
   roles:
     - name: pallxk.code_server
       #code_server_work_dir: ~
       #code_server_password: "" # Leave empty to use auto-generated password
-      code_server_user: "{{ ansible_user_id }}"
+      #code_server_user: "{{ ansible_user_id }}"
       code_server_host: 127.0.0.1
       code_server_port: 8443
       #tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem

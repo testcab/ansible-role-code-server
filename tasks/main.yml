@@ -1,4 +1,8 @@
 ---
+# Always gather facts as we use ansible_os_family and ansible_user_id
+- name: Gather Facts
+  gather_facts:
+
 - name: Include RedHat specific tasks
   include_tasks: RedHat.yml
   when: ansible_os_family == "RedHat"
