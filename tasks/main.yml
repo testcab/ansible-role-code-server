@@ -3,20 +3,18 @@
 - name: Gather Facts
   gather_facts:
 
-- name: Include RedHat specific tasks
-  include_tasks: RedHat.yml
-  when: ansible_os_family == "RedHat"
-
-- name: Include Debian specific tasks
-  include_tasks: Debian.yml
-  when: ansible_os_family == "Debian"
-
 - name: Check systemd version
   shell: "set -o pipefail; systemctl --version | head -1 | cut -d' ' -f2"
   args:
     executable: /bin/bash
   register: systemctl_version
   changed_when: no
+
+- name: Create {{ systemd_unit_files_dir }}
+  become: yes
+  file:
+    state: directory
+    path: "{{ systemd_unit_files_dir }}"
 
 - name: Check code-server
   include_tasks: check-code-server.yml
