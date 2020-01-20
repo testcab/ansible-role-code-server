@@ -18,7 +18,6 @@
     src: "{{ tls_cert | expanduser }}"
     dest: "{{ code_server_data_dir | expanduser }}/tls.cert"
     mode: 0440
-    group: "{{ code_server_user }}"
   notify: Restart code-server
   when: tls_cert is defined
 
@@ -29,6 +28,5 @@
     src: "{{ tls_key | expanduser }}"
     dest: "{{ code_server_data_dir | expanduser }}/tls.key"
     mode: 0440
-    group: "{{ code_server_user }}"
   notify: Restart code-server
   when: tls_key is defined
