@@ -1,7 +1,8 @@
 ---
-# Always gather facts as we use ansible_os_family and ansible_user_id
+# Always gather facts as we use ansible_user_id
 - name: Gather Facts
-  gather_facts:
+  setup:
+    gather_subset: '!all'
 
 - name: Check systemd version
   shell: "set -o pipefail; systemctl --version | head -1 | cut -d' ' -f2"

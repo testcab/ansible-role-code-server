@@ -1,6 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
 - hosts: localhost
-  gather_facts: yes
+  gather_facts: no
   roles:
     - name: ../..

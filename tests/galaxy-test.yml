@@ -1,6 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
 - hosts: localhost
+  gather_facts: no
   roles:
     - name: pallxk.code_server
       #code_server_work_dir: "~"
