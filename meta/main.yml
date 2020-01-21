@@ -32,15 +32,21 @@ galaxy_info:
   - name: ArchLinux
     versions:
     - all
+  - name: Debian
+    versions:
+    - buster
   - name: EL
     versions:
     - 7
+  - name: Fedora
+    versions:
+    - 31
+  - name: SLES
+    versions:
+    - 15
   - name: Ubuntu
     versions:
-    - all
-  - name: Debian
-    versions:
-    - all
+    - bionic
 
   galaxy_tags:
   - development
