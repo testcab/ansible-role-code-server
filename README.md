@@ -17,8 +17,8 @@ Role Variables
 Variable             | Default  | Comment
 -------------------- | -------- | -------
 code_server_ver      | `2.1698-vsc1.41.1` | code-server release name on [GitHub](https://github.com/cdr/code-server/releases)
-code_server_data_dir | `~/.local/share/code-server`
-code_server_work_dir | `~` | Working directory
+code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
+code_server_work_dir | `{{ ansible_user_dir }}` | Working directory. <br> Defaults to the home directory of the remote user.
 code_server_password | (not defined) | Leave not defined to use auto-generated password. <br> Check it with `journalctl -u code-server`
 code_server_user     | `{{ ansible_user_id }}` | The user to run code-server. <br> Defaults to the user used in ansible ssh connection.
 code_server_host     | `0.0.0.0`

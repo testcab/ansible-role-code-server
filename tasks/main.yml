@@ -1,5 +1,5 @@
 ---
-# Always gather facts as we use ansible_user_id
+# Always gather facts as we use ansible_user_id and ansible_user_dir
 - name: Gather Facts
   setup:
     gather_subset: '!all'

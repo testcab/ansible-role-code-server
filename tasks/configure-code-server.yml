@@ -15,8 +15,8 @@
   become: "{{ tls_cert_remote }}"
   copy:
     remote_src: "{{ tls_cert_remote }}"
-    src: "{{ tls_cert | expanduser }}"
-    dest: "{{ code_server_data_dir | expanduser }}/tls.cert"
+    src: "{{ tls_cert }}"
+    dest: "{{ code_server_data_dir }}/tls.cert"
     mode: 0440
   notify: Restart code-server
   when: tls_cert is defined
@@ -25,8 +25,8 @@
   become: "{{ tls_cert_remote }}"
   copy:
     remote_src: "{{ tls_key_remote }}"
-    src: "{{ tls_key | expanduser }}"
-    dest: "{{ code_server_data_dir | expanduser }}/tls.key"
+    src: "{{ tls_key }}"
+    dest: "{{ code_server_data_dir }}/tls.key"
     mode: 0440
   notify: Restart code-server
   when: tls_key is defined
