@@ -1,5 +1,5 @@
 ---
-bin_dir: /usr/local/bin
+code_server_bin_dir: /usr/local/bin
 code_server_dir: "{{ '/opt/code-server' if code_server_major == '3' else '' }}"
 code_server_service_dir: /usr/local/lib/systemd/system
 code_server_url_prefix: https://github.com/cdr/code-server/releases/download

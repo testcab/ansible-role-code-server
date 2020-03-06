@@ -3,7 +3,7 @@
   unarchive:
     remote_src: yes
     src: "{{ code_server_tar_url }}"
-    dest: "{{ bin_dir }}"
+    dest: "{{ code_server_bin_dir }}"
     extra_opts:
       - --strip-components=1
       - --wildcards

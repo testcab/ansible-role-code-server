@@ -10,9 +10,9 @@ User={{ code_server_user }}
 EnvironmentFile={{ code_server_data_dir_abs }}/env
 {% endif %}
 {% if code_server_major != '1' %}
-ExecStart={{ bin_dir }}/code-server --auth password {% if code_server_tls_cert is defined %}--cert {{ code_server_data_dir_abs }}/tls.cert{% endif %} {% if code_server_tls_key is defined %}--cert-key {{ code_server_data_dir_abs }}/tls.key{% endif %} --host {{ code_server_host }} --port {{ code_server_port }} {{ code_server_work_dir }}
+ExecStart={{ code_server_bin_dir }}/code-server --auth password {% if code_server_tls_cert is defined %}--cert {{ code_server_data_dir_abs }}/tls.cert{% endif %} {% if code_server_tls_key is defined %}--cert-key {{ code_server_data_dir_abs }}/tls.key{% endif %} --host {{ code_server_host }} --port {{ code_server_port }} {{ code_server_work_dir }}
 {% else %}
-ExecStart={{ bin_dir }}/code-server {% if code_server_tls_cert is defined %}--cert {{ code_server_data_dir_abs }}/tls.cert{% endif %} {% if code_server_tls_key is defined %}--cert-key {{ code_server_data_dir_abs }}/tls.key{% endif %} --host {{ code_server_host }} --port {{ code_server_port }} {{ code_server_work_dir }}
+ExecStart={{ code_server_bin_dir }}/code-server {% if code_server_tls_cert is defined %}--cert {{ code_server_data_dir_abs }}/tls.cert{% endif %} {% if code_server_tls_key is defined %}--cert-key {{ code_server_data_dir_abs }}/tls.key{% endif %} --host {{ code_server_host }} --port {{ code_server_port }} {{ code_server_work_dir }}
 {% endif %}
 WorkingDirectory=~
 

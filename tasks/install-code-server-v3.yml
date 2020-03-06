@@ -16,12 +16,12 @@
   when: not code_server_exists.stat.exists or
         code_server_version.stdout != code_server_ver
 
-- name: Add {{ bin_dir }}/code-server
+- name: Add {{ code_server_bin_dir }}/code-server
   become: yes
   file:
     state: link
     src: "{{ code_server_dir }}/code-server"
-    dest: "{{ bin_dir }}/code-server"
+    dest: "{{ code_server_bin_dir }}/code-server"
     # force is required if upgrade from v1 or v2,
     # in which case dest exists and is a file.
     force: yes
