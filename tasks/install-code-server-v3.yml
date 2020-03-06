@@ -1,15 +1,15 @@
-- name: Create {{ opt_dir }}/code-server
+- name: Create {{ code_server_dir }}
   become: yes
   file:
     state: directory
-    path: "{{ opt_dir }}/code-server"
+    path: "{{ code_server_dir }}"
 
 - name: Download code-server v3
   become: yes
   unarchive:
     remote_src: yes
     src: "{{ code_server_tar_url }}"
-    dest: "{{ opt_dir }}/code-server"
+    dest: "{{ code_server_dir }}"
     extra_opts:
       - --strip-components=1
   notify: Restart code-server
@@ -20,7 +20,7 @@
   become: yes
   file:
     state: link
-    src: "{{ opt_dir }}/code-server/code-server"
+    src: "{{ code_server_dir }}/code-server"
     dest: "{{ bin_dir }}/code-server"
     # force is required if upgrade from v1 or v2,
     # in which case dest exists and is a file.

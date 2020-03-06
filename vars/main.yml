@@ -1,6 +1,6 @@
 ---
 bin_dir: /usr/local/bin
-opt_dir: /opt
+code_server_dir: "{{ '/opt/code-server' if code_server_major == '3' else '' }}"
 systemd_unit_files_dir: /usr/local/lib/systemd/system
 code_server_url_prefix: https://github.com/cdr/code-server/releases/download
 code_server_short_ver: "{{ code_server_ver | regex_replace('-.+', '') }}"
