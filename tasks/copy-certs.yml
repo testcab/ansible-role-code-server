@@ -1,17 +1,17 @@
 - name: Copy TLS certificate
   copy:
-    remote_src: "{{ tls_cert_remote }}"
-    src: "{{ tls_cert }}"
+    remote_src: "{{ code_server_tls_cert_remote }}"
+    src: "{{ code_server_tls_cert }}"
     dest: "{{ code_server_data_dir }}/tls.cert"
     mode: 0440
   notify: Restart code-server
-  when: tls_cert is defined
+  when: code_server_tls_cert is defined
 
 - name: Copy TLS key
   copy:
-    remote_src: "{{ tls_key_remote }}"
-    src: "{{ tls_key }}"
+    remote_src: "{{ code_server_tls_key_remote }}"
+    src: "{{ code_server_tls_key }}"
     dest: "{{ code_server_data_dir }}/tls.key"
     mode: 0440
   notify: Restart code-server
-  when: tls_key is defined
+  when: code_server_tls_key is defined

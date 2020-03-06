@@ -9,7 +9,7 @@
       #code_server_user: "{{ ansible_user_id }}"
       code_server_host: 127.0.0.1
       code_server_port: 8443
-      #tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
-      #tls_cert_remote: no
-      #tls_key: /etc/letsencrypt/live/example.com/privkey.pem
-      #tls_key_remote: no
+      #code_server_tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
+      #code_server_tls_cert_remote: no
+      #code_server_tls_key: /etc/letsencrypt/live/example.com/privkey.pem
+      #code_server_tls_key_remote: no

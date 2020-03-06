@@ -23,10 +23,10 @@ code_server_password | (not defined) | Leave not defined to use auto-generated p
 code_server_user     | `{{ ansible_user_id }}` | The user to run code-server. <br> Defaults to the user used in ansible ssh connection.
 code_server_host     | `0.0.0.0`
 code_server_port     | `8080`
-tls_cert             | (not defined) | Leave not defined to use self-signed certificate.
-tls_cert_remote      | `no` | Change to `yes` if you're using a certificate that's already in your server (e.g.: if you use Let's Encrypt)
-tls_key              | (not defined) | Leave not defined to use self-signed certificate.
-tls_key_remote      | `no` | Change to `yes` if you're using a key that's already in your server (e.g.: if you use Let's Encrypt)
+code_server_tls_cert | (not defined) | Leave not defined to use self-signed certificate.
+code_server_tls_cert_remote | `no` | Change to `yes` if you're using a certificate that's already in your server (e.g.: if you use Let's Encrypt)
+code_server_tls_key  | (not defined) | Leave not defined to use self-signed certificate.
+code_server_tls_key_remote | `no` | Change to `yes` if you're using a key that's already in your server (e.g.: if you use Let's Encrypt)
 
 Dependencies
 ------------
@@ -48,8 +48,8 @@ Example Playbook
       code_server_user: "{{ ansible_user_id }}"
       code_server_host: 0.0.0.0
       code_server_port: 8443
-      tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
-      tls_key: /etc/letsencrypt/live/example.com/privkey.pem
+      code_server_tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
+      code_server_tls_key: /etc/letsencrypt/live/example.com/privkey.pem
 ```
 
 License

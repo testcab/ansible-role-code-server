@@ -6,7 +6,7 @@ code_server_work_dir: "{{ ansible_user_dir }}"
 code_server_user: "{{ ansible_user_id }}"
 code_server_host: 0.0.0.0
 code_server_port: 8080
-#tls_cert: ""
-tls_cert_remote: no
-#tls_key: ""
-tls_key_remote: no
+#code_server_tls_cert: ""
+code_server_tls_cert_remote: no
+#code_server_tls_key: ""
+code_server_tls_key_remote: no
