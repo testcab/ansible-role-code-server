@@ -3,10 +3,10 @@
     path: "{{ bin_dir }}/code-server"
   register: code_server_exists
 
-- name: Check code-server v1 version
+- name: Check code-server version
   command: code-server --version
   register: code_server_version
-  when: code_server_major == '1' and
+  when: code_server_major != '2' and
         code_server_exists.stat.exists
   changed_when: no
 
@@ -15,6 +15,6 @@
   args:
     executable: /bin/bash
   register: code_server_version
-  when: code_server_major != '1' and
+  when: code_server_major == '2' and
         code_server_exists.stat.exists
   changed_when: no

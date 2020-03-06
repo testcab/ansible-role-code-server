@@ -20,8 +20,11 @@
 - name: Check code-server
   include_tasks: check-code-server.yml
 
-- name: Install code-server
-  include_tasks: install-code-server.yml
+- import_tasks: install-code-server-legacy.yml
+  when: code_server_major != '3'
+
+- import_tasks: install-code-server-v3.yml
+  when: code_server_major == '3'
 
 - import_tasks: install-code-server-service.yml
 

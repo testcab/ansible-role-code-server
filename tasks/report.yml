@@ -1,6 +1,7 @@
 - name: List installed files
   debug:
     msg:
+    - "{% if code_server_major == '3' %}{{ opt_dir }}/code-server{% endif %}"
     - "{{ bin_dir }}/code-server"
     - "{{ systemd_unit_files_dir }}/code-server.service"
     - "{{ systemd_unit_files_dir }}/code-server.service.d/restart.conf"

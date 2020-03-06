@@ -1,0 +1,25 @@
+- name: Create {{ opt_dir }}/code-server
+  become: yes
+  file:
+    state: directory
+    path: "{{ opt_dir }}/code-server"
+
+- name: Download code-server v3
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: "{{ code_server_tar_url }}"
+    dest: "{{ opt_dir }}/code-server"
+    extra_opts:
+      - --strip-components=1
+  notify: Restart code-server
+  when: not code_server_exists.stat.exists or
+        code_server_version.stdout != code_server_ver
+
+- name: Add {{ bin_dir }}/code-server
+  become: yes
+  file:
+    state: link
+    src: "{{ opt_dir }}/code-server/code-server"
+    dest: "{{ bin_dir }}/code-server"
+  notify: Restart code-server

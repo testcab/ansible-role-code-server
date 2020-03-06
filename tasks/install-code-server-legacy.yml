@@ -1,4 +1,4 @@
-- name: Download code-server
+- name: Download code-server legacy
   become: yes
   unarchive:
     remote_src: yes
