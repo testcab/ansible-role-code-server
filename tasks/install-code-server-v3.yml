@@ -22,4 +22,7 @@
     state: link
     src: "{{ opt_dir }}/code-server/code-server"
     dest: "{{ bin_dir }}/code-server"
+    # force is required if upgrade from v1 or v2,
+    # in which case dest exists and is a file.
+    force: yes
   notify: Restart code-server
