@@ -2,12 +2,12 @@
   become: yes
   template:
     src: code-server.service
-    dest: "{{ systemd_unit_files_dir }}"
+    dest: "{{ code_server_service_dir }}"
   notify: Restart code-server
 
 - name: Copy code-server systemd override file
   become: yes
   template:
     src: code-server.service.d/restart.conf
-    dest: "{{ systemd_unit_files_dir }}/code-server.service.d/"
+    dest: "{{ code_server_service_dir }}/code-server.service.d/"
   notify: Restart code-server
