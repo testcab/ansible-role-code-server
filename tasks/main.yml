@@ -1,4 +1,12 @@
 ---
+- name: Check usage of deprecated role variables
+  include_tasks: deprecate.yml
+  when: >
+    tls_cert is defined
+    or tls_key is defined
+    or tls_cert_remote is defined
+    or tls_key_remote is defined
+
 # Always gather facts as we use ansible_user_id and ansible_user_dir
 - name: Gather Facts
   setup:

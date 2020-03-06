@@ -1,0 +1,18 @@
+- name: Check usage of deprecated variables
+  debug:
+    msg: "'{{ item }}' is deprecated, please use 'code_server_{{ item }}'"
+  when: "{{ item }} is defined"
+  with_items:
+  - tls_cert
+  - tls_key
+  - tls_cert_remote
+  - tls_key_remote
+
+- name: Set corresponding code_server_ variables
+  set_fact: code_server_{{ item }}={{ lookup('vars', item) }}
+  when: "{{ item }} is defined"
+  with_items:
+  - tls_cert
+  - tls_key
+  - tls_cert_remote
+  - tls_key_remote
