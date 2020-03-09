@@ -10,7 +10,7 @@ User={{ code_server_user }}
 EnvironmentFile={{ code_server_data_dir_abs }}/env
 {% endif %}
 ExecStart={{ code_server_bin_dir }}/code-server
- {%- if code_server_major != '1' %} --auth password{% endif %}
+ {%- if code_server_major != '1' %} --auth {{ code_server_auth }}{% endif %}
  {%- if code_server_tls_cert is defined %} --cert {{ code_server_data_dir_abs }}/tls.cert{% endif %}
  {%- if code_server_tls_key is defined %} --cert-key {{ code_server_data_dir_abs }}/tls.key{% endif %}
  {%- if code_server_work_dir is defined %} {{ code_server_work_dir }}{% endif %}
