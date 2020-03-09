@@ -1,7 +1,7 @@
 ---
 code_server_ver: 3.0.0
 code_server_data_dir: "{{ ansible_user_dir }}/.local/share/code-server"
-code_server_work_dir: "{{ ansible_user_dir }}"
+#code_server_work_dir: "{{ ansible_user_dir }}"
 #code_server_password: ""
 code_server_user: "{{ ansible_user_id }}"
 code_server_host: 0.0.0.0

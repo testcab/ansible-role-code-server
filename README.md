@@ -18,7 +18,7 @@ Variable             | Default  | Comment
 -------------------- | -------- | -------
 code_server_ver      | `3.0.0` | code-server release name on [GitHub](https://github.com/cdr/code-server/releases)
 code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
-code_server_work_dir | `{{ ansible_user_dir }}` | Working directory. <br> Defaults to the home directory of the remote user.
+code_server_work_dir | (not defined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
 code_server_password | (not defined) | Leave not defined to use auto-generated password. <br> Check it with `journalctl -u code-server`
 code_server_user     | `{{ ansible_user_id }}` | The user to run code-server. <br> Defaults to the user used in ansible ssh connection.
 code_server_host     | `0.0.0.0`
@@ -43,7 +43,6 @@ Example Playbook
   gather_facts: yes
   roles:
     - name: pallxk/code_server
-      code_server_work_dir: ~/code-server
       code_server_password: SuperSecret
       code_server_user: "{{ ansible_user_id }}"
       code_server_host: 0.0.0.0
