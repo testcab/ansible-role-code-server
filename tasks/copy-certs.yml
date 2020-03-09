@@ -3,6 +3,8 @@
     remote_src: "{{ code_server_tls_cert_remote }}"
     src: "{{ code_server_tls_cert }}"
     dest: "{{ code_server_data_dir }}/tls.cert"
+    owner: "{{ code_server_user }}"
+    group: "{{ ansible_user_gid|string }}"
     mode: 0440
   notify: Restart code-server
   when: code_server_tls_cert is defined
@@ -12,6 +14,8 @@
     remote_src: "{{ code_server_tls_key_remote }}"
     src: "{{ code_server_tls_key }}"
     dest: "{{ code_server_data_dir }}/tls.key"
+    owner: "{{ code_server_user }}"
+    group: "{{ ansible_user_gid|string }}"
     mode: 0440
   notify: Restart code-server
   when: code_server_tls_key is defined
