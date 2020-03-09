@@ -4,7 +4,7 @@ ansible-role-code-server
 [![Ansible Role](https://img.shields.io/ansible/role/40925.svg)](https://galaxy.ansible.com/pallxk/code_server)
 [![Build Status](https://travis-ci.org/testcab/ansible-role-code-server.svg?branch=master)](https://travis-ci.org/testcab/ansible-role-code-server)
 
-This role installs and configures [code-server], supporting v3, v2 and v1.
+This role installs and configures the latest or specified version of [code-server], supporting v3, v2 and v1.
 
 Requirements
 ------------
@@ -16,7 +16,7 @@ Role Variables
 
 Variable             | Default  | Comment
 -------------------- | -------- | -------
-code_server_ver      | `3.0.0` | code-server release name on [GitHub](https://github.com/cdr/code-server/releases)
+code_server_ver      | (not defined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the latest version (including pre-release).
 code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
 code_server_work_dir | (not defined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
 code_server_auth     | `password` | Authentication with `password` or `none`. <br> Available for code-server v3 and v2.
