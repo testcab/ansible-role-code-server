@@ -16,17 +16,17 @@ Role Variables
 
 Variable             | Default  | Comment
 -------------------- | -------- | -------
-code_server_ver      | (not defined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the latest version (including pre-release).
+code_server_ver      | (undefined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the latest version (including pre-release).
 code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
-code_server_work_dir | (not defined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
+code_server_work_dir | (undefined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
 code_server_auth     | `password` | Authentication with `password` or `none`. <br> Available for code-server v3 and v2.
-code_server_password | (not defined) | Leave not defined to use auto-generated password. <br> Check it with `journalctl -u code-server`
+code_server_password | (undefined) | Leave undefined to use auto-generated password. <br> Check it with `journalctl -u code-server`
 code_server_user     | `{{ ansible_user_id }}` | The user to run code-server. <br> Defaults to the user used in ansible ssh connection.
 code_server_host     | `0.0.0.0`
 code_server_port     | `8080`
-code_server_tls_cert | (not defined) | Leave not defined to use self-signed certificate.
+code_server_tls_cert | (undefined) | Leave undefined to use self-signed certificate.
 code_server_tls_cert_remote | `no` | Change to `yes` if you're using a certificate that's already in your server (e.g.: if you use Let's Encrypt)
-code_server_tls_key  | (not defined) | Leave not defined to use self-signed certificate.
+code_server_tls_key  | (undefined) | Leave undefined to use self-signed certificate.
 code_server_tls_key_remote | `no` | Change to `yes` if you're using a key that's already in your server (e.g.: if you use Let's Encrypt)
 
 Dependencies
