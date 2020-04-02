@@ -5,6 +5,9 @@
 
 # This check is compatible with code-server v1, v2 and v3
 #
+# v3.0.2:
+# 3.0.2 e480f6527e11344a7c69b7cd024bce9379cea7f0
+#
 # v3:
 # 3.0.0
 #
@@ -16,7 +19,7 @@
 # v1:
 # 1.1156-vsc1.33.1
 - name: Check installed code-server version
-  shell: "set -o pipefail; code-server --version | head -1 | cut -d' ' -f3"
+  shell: 'set -o pipefail; code-server --version | grep -P -o "\d+(\.\d+)+(-[^ ]+)?"'
   args:
     executable: /bin/bash
   register: code_server_version
