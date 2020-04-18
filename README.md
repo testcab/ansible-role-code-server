@@ -43,7 +43,7 @@ Example Playbook
 - hosts: localhost
   gather_facts: yes
   roles:
-    - name: pallxk/code_server
+    - name: pallxk.code_server
       code_server_password: SuperSecret
       code_server_user: "{{ ansible_user_id }}"
       code_server_host: 0.0.0.0
