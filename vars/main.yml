@@ -1,11 +1,34 @@
 ---
+# The directory to install the executable for code-server
 code_server_bin_dir: /usr/local/bin
+
+# code-server before v3 is a single file binary, code-server since v3 is a directory of files.
+# code_server_dir is only used for v3+
 code_server_dir: "{{ '/opt/code-server' if code_server_major == '3' else '' }}"
+
+# The directory to install code-server systemd service file
 code_server_service_dir: /usr/local/lib/systemd/system
+
+# URL prefix for downloading code-server
 code_server_url_prefix: https://github.com/cdr/code-server/releases/download
+
+# code_server_short_ver removes vscode version
+# 2.1692-vsc1.39.2 -> 2.1692
+# 3.0.0 -> 3.0.0
+# v3.3.0 -> v3.3.0
 code_server_short_ver: "{{ code_server_ver | regex_replace('-.+', '') }}"
+
+# The subdirectory under URL prefix containing code-server artifacts
 code_server_download_dir: "{{ code_server_short_ver if code_server_short_ver is version('2.1698', '>=') else code_server_ver }}"
+
+# The major version of code-server in string
 code_server_major: "{{ code_server_ver.split('.')[0] }}"
+
+# The architecture of code-server as used in download URL
 code_server_arch: "{{ 'x86_64' if code_server_major != '1' else 'x64' }}"
+
+# The build-up final .tar.gz url for code-server
 code_server_tar_url: "{{ code_server_url_prefix }}/{{ code_server_download_dir }}/code-server{{ '-' if code_server_major == '3' else '' }}{{ code_server_ver }}-linux-{{ code_server_arch }}.tar.gz"
+
+# The data directory of code-server
 code_server_data_dir_abs: "{{ code_server_data_dir | expanduser }}"
