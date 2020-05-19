@@ -1,6 +1,7 @@
 - name: Check code-server binary exists
   stat:
     path: "{{ code_server_bin_dir }}/code-server"
+    follow: yes
   register: code_server_exists
 
 # This check is compatible with code-server v1, v2 and v3
