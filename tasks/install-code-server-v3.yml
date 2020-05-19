@@ -20,7 +20,7 @@
   become: yes
   file:
     state: link
-    src: "{{ code_server_dir }}/code-server"
+    src: "{{ code_server_dir }}{{ '/bin' if code_server_cleaned_ver is version('3.3.0', '>=') else '' }}/code-server"
     dest: "{{ code_server_bin_dir }}/code-server"
     # force is required if upgrade from v1 or v2,
     # in which case dest exists and is a file.
