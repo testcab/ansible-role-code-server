@@ -6,7 +6,7 @@
     owner: "{{ code_server_user }}"
     group: "{{ ansible_user_gid|string }}"
     mode: 0440
-  notify: Restart code-server
+  register: copy_tls_certificate
   when: code_server_tls_cert is defined
 
 - name: Copy TLS key
@@ -17,5 +17,5 @@
     owner: "{{ code_server_user }}"
     group: "{{ ansible_user_gid|string }}"
     mode: 0440
-  notify: Restart code-server
+  register: copy_tls_key
   when: code_server_tls_key is defined

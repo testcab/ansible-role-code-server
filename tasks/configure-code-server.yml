@@ -8,7 +8,7 @@
     src: env
     dest: "{{ code_server_data_dir }}"
     mode: 0600
-  notify: Restart code-server
+  register: copy_code_server_env_file
   when: code_server_password is defined
 
 - block:
