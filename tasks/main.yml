@@ -53,15 +53,21 @@
         copy_code_server_systemd_override_file.changed or
         download_code_server_v3.changed or
         add_code_server.changed
+  tags:
+    - service
 
 - name: Enable code-server service
   become: yes
   systemd:
     name: code-server
     enabled: yes
+  tags:
+    - service
 
 - name: Report
   include_tasks: report.yml
 
 - name: Sanity Test
   include_tasks: tests.yml
+  tags:
+    - tests
