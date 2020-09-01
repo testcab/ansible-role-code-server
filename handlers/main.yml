@@ -1,0 +1,10 @@
+---
+- name: Restart code-server
+  become: yes
+  systemd:
+    daemon-reload: yes
+    name: code-server
+    state: restarted
+    # We mark the service as Type=notify to auto restart it routinely,
+    # but it's actually Type=simple, so "no_block: yes" here to avoid stuck.
+    no_block: yes

@@ -3,11 +3,11 @@
   template:
     src: code-server.service
     dest: "{{ code_server_service_dir }}"
-  register: copy_coder_server_systemd_unit_file
+  notify: Restart code-server
 
 - name: Copy code-server systemd override file
   become: yes
   template:
     src: code-server.service.d/restart.conf
     dest: "{{ code_server_service_dir }}/code-server.service.d/"
-  register: copy_code_server_systemd_override_file
+  notify: Restart code-server

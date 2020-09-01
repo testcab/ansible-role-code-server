@@ -8,6 +8,6 @@
       - --strip-components=1
       - --wildcards
       - "*/code-server"
-  register: download_code_server_legacy
+  notify: Restart code-server
   when: not code_server_exists.stat.exists or
         code_server_version.stdout != code_server_ver

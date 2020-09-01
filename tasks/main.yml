@@ -39,22 +39,7 @@
 - name: Configure code-server
   include_tasks: configure-code-server.yml
 
-- name: Restart code-server
-  become: yes
-  systemd:
-    daemon-reload: yes
-    name: code-server
-    state: restarted
-  when: copy_code_server_env_file.changed or
-        copy_tls_certificate.changed or
-        copy_tls_key.changed or
-        download_code_server_legacy.changed or
-        copy_coder_server_systemd_unit_file.changed or
-        copy_code_server_systemd_override_file.changed or
-        download_code_server_v3.changed or
-        add_code_server.changed
-  tags:
-    - service
+- meta: flush_handlers
 
 - name: Enable code-server service
   become: yes

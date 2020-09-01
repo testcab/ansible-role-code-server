@@ -12,7 +12,7 @@
     dest: "{{ code_server_dir }}"
     extra_opts:
       - --strip-components=1
-  register: download_code_server_v3
+  notify: Restart code-server
   when: not code_server_exists.stat.exists or
         code_server_version.stdout != code_server_ver
 
@@ -25,4 +25,4 @@
     # force is required if upgrade from v1 or v2,
     # in which case dest exists and is a file.
     force: yes
-  register: add_code_server
+  notify: Restart code-server
