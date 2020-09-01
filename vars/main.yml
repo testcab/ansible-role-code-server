@@ -34,3 +34,7 @@ code_server_tar_url: "{{ code_server_url_prefix }}/{{ code_server_download_dir }
 
 # The data directory of code-server
 code_server_data_dir_abs: "{{ code_server_data_dir | expanduser }}"
+
+# Whether to configure service.
+# This will be set to yes in tasks unless `--skip-tags service` specified.
+code_server_configure_service: no

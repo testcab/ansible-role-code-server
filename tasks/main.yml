@@ -39,6 +39,12 @@
 - name: Configure code-server
   include_tasks: configure-code-server.yml
 
+- name: Configure service
+  set_fact:
+    code_server_configure_service: yes
+  tags:
+    - service
+
 - meta: flush_handlers
 
 - name: Enable code-server service
