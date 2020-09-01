@@ -6,6 +6,21 @@ ansible-role-code-server
 
 This role installs and configures the latest or specified version of [code-server], supporting v3, v2 and v1.
 
+```sh
+# Install the latest stable version of the role
+ansible-galaxy install -f pallxk.code_server
+
+# Install the latest development version of the role
+ansible-galaxy install -f pallxk.code_server,master
+```
+
+To actually install *code-server*, refer to the section [Example Playbook](#example-playbook).
+
+**Note:** The version of the role is irrelevant to the version of *code-server* you can install. Actually, it installs the latest version of *code-server* by default. And you can also use a lower-versioned role to install a higher-versioned *code-server*.  
+When there are changes to the role, the role version will get updated to the latest version number of *code-server*.  
+If you're having problems installing any version of code-server, please report the issue.  
+
+
 Requirements
 ------------
 
@@ -16,7 +31,7 @@ Role Variables
 
 Variable             | Default  | Comment
 -------------------- | -------- | -------
-code_server_ver      | (undefined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the latest version (including pre-release).
+code_server_ver      | (undefined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the **latest** version (including pre-release).
 code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
 code_server_work_dir | (undefined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
 code_server_auth     | `password` | Authentication with `password` or `none`. <br> Available for code-server v3 and v2.
