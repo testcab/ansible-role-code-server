@@ -6,6 +6,10 @@
 
 # This check is compatible with code-server v1, v2 and v3
 #
+# v3.5.0:
+# [2020-09-01T06:20:36.864Z] info  Using config file ~/.config/code-server/config.yaml
+# 3.5.0 de41646fc402b968ca6d555fdf2da7de9554d28a
+#
 # v3.4.1:
 # info  Using config file ~/.config/code-server/config.yaml
 # 3.4.1 48f7c2724827e526eeaa6c2c151c520f48a61259
@@ -24,7 +28,7 @@
 # v1:
 # 1.1156-vsc1.33.1
 - name: Check installed code-server version
-  shell: 'set -o pipefail; code-server --version | grep -P -o "\d+(\.\d+)+(-[^ ]+)?"'
+  shell: 'set -o pipefail; code-server --version | grep -P -o "(?<=^|info  )\d+(\.\d+)+(-[^ ]+)?"'
   args:
     executable: /bin/bash
   register: code_server_version
