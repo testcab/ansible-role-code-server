@@ -32,6 +32,7 @@ Role Variables
 Variable             | Default  | Comment
 -------------------- | -------- | -------
 code_server_ver      | (undefined) | code-server release name on [GitHub](https://github.com/cdr/code-server/releases). <br> Defaults to the **latest** version (including pre-release).
+code_server_install_prefix | `/usr/local` | Installation prefix for code-server.
 code_server_data_dir | `{{ ansible_user_dir }}/.local/share/code-server` | Defaults to `.local/share/code-server` in the home directory of the remote user.
 code_server_work_dir | (undefined) | Working directory. <br> Defaults to welcome screen if not set in v3 and v2. <br> Defaults to the home directory of the remote user in v1.
 code_server_auth     | `password` | Authentication with `password` or `none`. <br> Available for code-server v3 and v2.

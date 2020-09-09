@@ -8,3 +8,4 @@
     # We mark the service as Type=notify to auto restart it routinely,
     # but it's actually Type=simple, so "no_block: yes" here to avoid stuck.
     no_block: yes
+  when: code_server_configure_service

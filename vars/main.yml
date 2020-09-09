@@ -1,13 +1,13 @@
 ---
 # The directory to install the executable for code-server
-code_server_bin_dir: /usr/local/bin
+code_server_bin_dir: "{{ code_server_install_prefix }}/bin"
 
 # code-server before v3 is a single file binary, code-server since v3 is a directory of files.
 # code_server_dir is only used for v3+
 code_server_dir: "{{ '/opt/code-server' if code_server_major == '3' else '' }}"
 
 # The directory to install code-server systemd service file
-code_server_service_dir: /usr/local/lib/systemd/system
+code_server_service_dir: "{{ code_server_install_prefix }}/lib/systemd/system"
 
 # URL prefix for downloading code-server
 code_server_url_prefix: https://github.com/cdr/code-server/releases/download
@@ -34,3 +34,7 @@ code_server_tar_url: "{{ code_server_url_prefix }}/{{ code_server_download_dir }
 
 # The data directory of code-server
 code_server_data_dir_abs: "{{ code_server_data_dir | expanduser }}"
+
+# Whether to configure service.
+# This will be set to yes in tasks unless `--skip-tags service` specified.
+code_server_configure_service: no
