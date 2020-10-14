@@ -6,6 +6,9 @@
 
 # This check is compatible with code-server v1, v2 and v3
 #
+# v3.6.0:
+# 3.6.0 a4a03c14922ccaec2a9ff8d1b7b2af8522a4214d
+#
 # v3.5.0:
 # [2020-09-01T06:20:36.864Z] info  Using config file ~/.config/code-server/config.yaml
 # 3.5.0 de41646fc402b968ca6d555fdf2da7de9554d28a
