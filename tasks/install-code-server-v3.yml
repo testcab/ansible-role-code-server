@@ -1,3 +1,9 @@
+- name: Clean up {{ code_server_dir }}
+  become: yes
+  file:
+    state: absent
+    path: "{{ code_server_dir }}"
+
 - name: Create {{ code_server_dir }}
   become: yes
   file:
