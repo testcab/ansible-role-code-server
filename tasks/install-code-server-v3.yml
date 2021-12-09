@@ -3,6 +3,7 @@
   file:
     state: absent
     path: "{{ code_server_dir }}"
+  when: code_server_download_needed
 
 - name: Create {{ code_server_dir }}
   become: yes
