@@ -19,8 +19,10 @@
     extra_opts:
       - --strip-components=1
   notify: Restart code-server
+  # Note that code-server release tag has a 'v' prefix since v3.3.0,
+  # while `code-server --version` never outputs the 'v' prefix.
   when: not code_server_exists.stat.exists or
-        code_server_version.stdout != code_server_ver
+        code_server_version.stdout != code_server_cleaned_ver
 
 - name: Add {{ code_server_bin_dir }}/code-server
   become: yes
