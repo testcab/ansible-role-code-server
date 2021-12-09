@@ -1,6 +1,6 @@
 {% if code_server_password is defined %}
-PASSWORD="{{ code_server_password }}"
+PASSWORD={{ code_server_password | quote }}
 {% endif %}
 {% for env in code_server_env %}
-{{ env }}="{{ code_server_env[env] }}"
+{{ env }}={{ code_server_env[env] | quote }}
 {% endfor %}
