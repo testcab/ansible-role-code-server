@@ -20,6 +20,13 @@ code_server_cleaned_ver: "{{ code_server_ver | regex_replace('^v', '') }}"
 # 3.0.0 -> 3.0.0
 code_server_short_ver: "{{ code_server_cleaned_ver | regex_replace('-.+', '') }}"
 
+# Whether we need to download code-server for fresh install or upgrade.
+# Note that code-server release tag has a 'v' prefix since v3.3.0,
+# while `code-server --version` never outputs the 'v' prefix.
+code_server_download_needed: >-
+  {{ not code_server_exists.stat.exists
+  or code_server_version.stdout != code_server_cleaned_ver }}
+
 # The subdirectory under URL prefix containing code-server artifacts
 code_server_download_dir: "{{ 'v' if code_server_cleaned_ver is version('3.3.0', '>=') else '' }}{{ code_server_short_ver if code_server_short_ver is version('2.1698', '>=') else code_server_cleaned_ver }}"
 
