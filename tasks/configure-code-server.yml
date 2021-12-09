@@ -9,7 +9,8 @@
     dest: "{{ code_server_data_dir }}"
     mode: 0600
   notify: Restart code-server
-  when: code_server_password is defined
+  when: code_server_password is defined or
+        code_server_env|length > 0
 
 - block:
   - import_tasks: copy-certs.yml

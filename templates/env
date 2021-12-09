@@ -1,1 +1,6 @@
+{% if code_server_password is defined %}
 PASSWORD="{{ code_server_password }}"
+{% endif %}
+{% for env in code_server_env %}
+{{ env }}="{{ code_server_env[env] }}"
+{% endfor %}

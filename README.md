@@ -40,6 +40,7 @@ code_server_password | (undefined) | Leave undefined to use auto-generated passw
 code_server_user     | `{{ ansible_user_id }}` | The user to run code-server. <br> Defaults to the user used in ansible ssh connection.
 code_server_host     | `0.0.0.0`
 code_server_port     | `8080`
+code_server_env      | `{}` | Additional environment variables to set for code-server.
 code_server_tls_cert | (undefined) | Leave undefined to use self-signed certificate.
 code_server_tls_cert_remote | `no` | Change to `yes` if you're using a certificate that's already in your server (e.g.: if you use Let's Encrypt)
 code_server_tls_key  | (undefined) | Leave undefined to use self-signed certificate.
@@ -64,6 +65,9 @@ Example Playbook
       code_server_user: "{{ ansible_user_id }}"
       code_server_host: 0.0.0.0
       code_server_port: 8443
+      code_server_env:
+        SERVICE_URL: https://open-vsx.org/vscode/gallery
+        ITEM_URL: https://open-vsx.org/vscode/item
       code_server_tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
       code_server_tls_key: /etc/letsencrypt/live/example.com/privkey.pem
 ```

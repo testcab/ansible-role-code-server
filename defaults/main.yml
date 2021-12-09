@@ -8,6 +8,7 @@ code_server_auth: password
 code_server_user: "{{ ansible_user_id }}"
 code_server_host: 0.0.0.0
 code_server_port: 8080
+code_server_env: {}
 #code_server_tls_cert: ""
 code_server_tls_cert_remote: no
 #code_server_tls_key: ""
