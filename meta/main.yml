@@ -1,7 +1,7 @@
 galaxy_info:
   role_name: code_server
   author: pallxk
-  description: Install and configure the latest or specified version of code-server (v3, v2 & v1).
+  description: Install and configure the latest or specified version of code-server (v4, v3, v2 & v1).
   company: test.cab
 
   # If the issue tracker for your role is not on github, uncomment the
