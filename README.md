@@ -3,6 +3,7 @@ ansible-role-code-server
 
 [![Ansible Role](https://img.shields.io/ansible/role/40925.svg)](https://galaxy.ansible.com/pallxk/code_server)
 [![Build Status](https://app.travis-ci.com/testcab/ansible-role-code-server.svg?branch=master)](https://app.travis-ci.com/github/testcab/ansible-role-code-server)
+[![Keep a Changelog](https://img.shields.io/badge/Keep%20a%20Changelog-CHANGELOG.md-orange)](CHANGELOG.md)
 
 This role installs and configures the latest or specified version of [code-server], supporting v4, v3, v2 and v1.
 
