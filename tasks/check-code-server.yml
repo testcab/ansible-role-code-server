@@ -46,5 +46,5 @@
 
 - name: Set code-server latest version
   set_fact:
-    code_server_ver: "{{ code_server_releases.json[0].name }}"
+    code_server_ver: "{{ code_server_releases.json[0].tag_name }}"
   when: code_server_ver is undefined
