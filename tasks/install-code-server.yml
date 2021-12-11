@@ -11,7 +11,7 @@
     state: directory
     path: "{{ code_server_dir }}"
 
-- name: Download code-server v3
+- name: Download code-server
   become: yes
   unarchive:
     remote_src: yes
