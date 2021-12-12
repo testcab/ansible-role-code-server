@@ -67,6 +67,16 @@ Example Playbook
       code_server_host: 0.0.0.0
       code_server_port: 8443
       code_server_env:
+        # code-server v4
+        # v4 defaults to use open-vsx.org,
+        # if you want to use the legacy Coder extensions marketplace, add the following:
+        EXTENSIONS_GALLERY: >
+          {
+            "serviceUrl": "https://extensions.coder.com/api"
+          }
+        # code-server v3
+        # v3 defaults to use Coder extensions marketplace,
+        # if you want to use open-vsx.org, add the following:
         SERVICE_URL: https://open-vsx.org/vscode/gallery
         ITEM_URL: https://open-vsx.org/vscode/item
       code_server_tls_cert: /etc/letsencrypt/live/example.com/fullchain.pem
