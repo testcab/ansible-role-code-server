@@ -16,6 +16,7 @@ ExecStart=bash -l -c '{{ code_server_bin_dir }}/code-server
  {%- if code_server_work_dir is defined %} {{ code_server_work_dir }}{% endif %}
  --host {{ code_server_host }} --port {{ code_server_port }}'
 WorkingDirectory=~
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target

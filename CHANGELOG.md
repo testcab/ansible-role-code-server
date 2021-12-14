@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Versioning of the role is irrelevant to the version of *code-server* you can install. Actually, it installs the latest version of *code-server* by default. And you can also use a lower-versioned role to install a higher-versioned *code-server*. When there are changes to the role, the role version will get updated to the latest version number of *code-server*.
 
+## [Unreleased](https://github.com/testcab/ansible-role-code-server/compare/v4.0.0...HEAD)
+
+### Added
+- Support running code-server with privileged port using non-root user.
+
 ## [v4.0.0](https://github.com/testcab/ansible-role-code-server/tree/v4.0.0) - 2021-12-11
 
 ### Added
