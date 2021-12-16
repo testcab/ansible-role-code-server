@@ -4,7 +4,6 @@
     - "{{ code_server_dir }}"
     - "{{ code_server_bin_dir }}/code-server"
     - "{{ code_server_service_dir }}/code-server.service"
-    - "{{ code_server_service_dir }}/code-server.service.d/restart.conf"
     - "{% if code_server_password is defined %}{{ code_server_data_dir }}/env{% endif %}"
     - "{% if code_server_tls_cert is defined %}{{ code_server_data_dir }}/tls.cert{% endif %}"
     - "{% if code_server_tls_key is defined %}{{ code_server_data_dir }}/tls.key{% endif %}"

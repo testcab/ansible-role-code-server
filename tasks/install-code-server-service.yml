@@ -7,7 +7,7 @@
 
 - name: Copy code-server systemd override file
   become: yes
-  template:
-    src: code-server.service.d/restart.conf
-    dest: "{{ code_server_service_dir }}/code-server.service.d/"
+  file:
+    path: "{{ code_server_service_dir }}/code-server.service.d/restart.conf"
+    state: absent
   notify: Restart code-server

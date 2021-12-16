@@ -11,6 +11,10 @@ Versioning of the role is irrelevant to the version of *code-server* you can ins
 ### Added
 - Support running code-server with privileged port using non-root user.
 
+### Removed
+- Remove the weekly auto restart of code-server service.
+
+
 ## [v4.0.0](https://github.com/testcab/ansible-role-code-server/tree/v4.0.0) - 2021-12-11
 
 ### Added
