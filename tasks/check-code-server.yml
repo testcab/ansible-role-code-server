@@ -42,6 +42,7 @@
   uri:
     url: https://api.github.com/repos/cdr/code-server/releases
   register: code_server_releases
+  delegate_to: localhost
   when: code_server_ver is undefined
 
 - name: Set code-server latest version

@@ -11,6 +11,9 @@ Versioning of the role is irrelevant to the version of *code-server* you can ins
 ### Added
 - Support running code-server with privileged port using non-root user.
 
+### Changed
+- Check for the latest version of code-server is now done locally.
+
 ### Removed
 - Remove the weekly auto restart of code-server service.
 
