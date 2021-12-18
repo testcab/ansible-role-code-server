@@ -3,6 +3,7 @@
   template:
     src: code-server.service
     dest: "{{ code_server_service_dir }}"
+    mode: 0644
   notify: Restart code-server
 
 - name: Copy code-server systemd override file

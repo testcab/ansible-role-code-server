@@ -24,6 +24,7 @@
   file:
     state: directory
     path: "{{ code_server_service_dir }}"
+    mode: 0755
 
 - name: Check code-server
   include_tasks: check-code-server.yml
