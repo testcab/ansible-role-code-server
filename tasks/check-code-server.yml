@@ -4,7 +4,9 @@
     follow: yes
   register: code_server_exists
 
-# This check is compatible with code-server v1, v2 and v3
+# This check is compatible with code-server v1, v2, v3 and v4
+# v4.2.0:
+# 4.2.0 693b1fac04524bb0e0cfbb93afc85702263329bb with Code 1.64.2
 #
 # v3.6.0:
 # 3.6.0 a4a03c14922ccaec2a9ff8d1b7b2af8522a4214d
